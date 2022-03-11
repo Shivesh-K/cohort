@@ -26,7 +26,7 @@ module.exports.username_get = async (req, res) => {
 module.exports.userid_get = async (req, res) => {
     const { userid } = req.params;
     try {
-        const user = await User.findOne({ id: userid });
+        const user = await User.findById(userid);
         if (!user)
             throw Error(`User with id ${userid} does not exist`);
         res.status(200).send({

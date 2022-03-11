@@ -37,7 +37,7 @@ module.exports.signup_post = async (req, res) => {
         res.cookie(
             'jwt',
             token,
-            { httpOnly: true, maxAge: 1000 * 60 * 60 * 24, secure: true }
+            { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }
         );
         await User.findByIdAndUpdate(user._id, { status: "ONLINE" });
         res.status(201).json({ user: { id: user._id, username: user.username, name: user.name } });
@@ -56,7 +56,7 @@ module.exports.login_post = async (req, res) => {
         res.cookie(
             'jwt',
             token,
-            { httpOnly: true, maxAge: 1000 * 60 * 60 * 24, secure: true }
+            { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 }
         );
         await User.findByIdAndUpdate(user._id, { status: "ONLINE" });
         res.status(201).json({ user: { id: user._id, username: user.username, name: user.name } });
